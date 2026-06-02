@@ -1,0 +1,14 @@
+[package]
+name = "tokimo-package-storage"
+version = "0.1.0"
+edition = "2024"
+description = "Shared StorageProvider trait and local filesystem implementation"
+
+[dependencies]
+async-trait = { workspace = true }
+bytes = { workspace = true }
+opendal = { version = "0.55", features = ["services-fs"] }
+tracing = { workspace = true }
+
+[lints]
+workspace = true
