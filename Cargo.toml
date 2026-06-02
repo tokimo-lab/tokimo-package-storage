@@ -5,10 +5,7 @@ edition = "2024"
 description = "Shared StorageProvider trait and local filesystem implementation"
 
 [dependencies]
-async-trait = { workspace = true }
-bytes = { workspace = true }
+async-trait = "0.1"
+bytes = "1"
 opendal = { version = "0.55", features = ["services-fs"] }
-tracing = { workspace = true }
-
-[lints]
-workspace = true
+tracing = "0.1"
