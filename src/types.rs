@@ -20,13 +20,23 @@ pub struct StorageObject {
 #[async_trait::async_trait]
 pub trait StorageProvider: Send + Sync {
     /// 上传文件。
-    async fn upload(&self, key: &str, body: Bytes, options: Option<UploadOptions>) -> Result<(), String>;
+    async fn upload(
+        &self,
+        key: &str,
+        body: Bytes,
+        options: Option<UploadOptions>,
+    ) -> Result<(), String>;
 
     /// 上传文件并返回不透明的存储 key。
     ///
     /// 对于本地存储，默认实现调用 `upload(key, ...)` 并返回传入的 key。
     /// 对于 bus 存储，override 为 server 端生成的 UUID 分片路径。
-    async fn upload_opaque(&self, key: &str, body: Bytes, options: Option<UploadOptions>) -> Result<String, String> {
+    async fn upload_opaque(
+        &self,
+        key: &str,
+        body: Bytes,
+        options: Option<UploadOptions>,
+    ) -> Result<String, String> {
         self.upload(key, body, options).await?;
         Ok(key.to_string())
     }
